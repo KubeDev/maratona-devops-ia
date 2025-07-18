@@ -24,7 +24,9 @@ jobs:
           context: 02-kube-news/src
           file: 02-kube-news/src/Dockerfile
           push: true
-          tags: oagara/kube-news-maratona:v${{ github.run_number }}
+          tags: |
+            oagara/kube-news-maratona:v${{ github.run_number }}
+            oagara/kube-news-maratona:latest
 
   deploy-to-kubernetes:
     runs-on: ubuntu-latest
