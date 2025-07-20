@@ -138,3 +138,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 *.Identifier
+
+# Ignorar todos os arquivos PNG
+*.png
