@@ -680,7 +680,7 @@ spec:
     app.kubernetes.io/name: prometheus-node-exporter
     app.kubernetes.io/instance: prometheus
 ---
-# Source: prometheus/templates/service.yaml
+# Source: prometheus/templates/service.yaml AQUI "Cluster IP"
 apiVersion: v1
 kind: Service
 metadata:
@@ -1232,7 +1232,7 @@ subjects:
   name: grafana
   namespace: default
 ---
-# Source: grafana/templates/service.yaml
+# Source: grafana/templates/service.yaml AQUI "Cluster IP"
 apiVersion: v1
 kind: Service
 metadata:
