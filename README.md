@@ -30,4 +30,12 @@ jobs:
             - run: echo "Obter o código"
             - run: echo "Configurar o Kubeconfig"
             - run: echo "Executar o apply"
-```            
+```        
+
+
+# Grafana
+
+Obter a senha do admin
+```        
+kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+```        
