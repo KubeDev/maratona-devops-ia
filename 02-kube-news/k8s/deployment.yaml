@@ -82,4 +82,4 @@ spec:
   - port: 80
     targetPort: 8080
   selector:
-    app: kube-news-app 
+    app: kube-news-app
