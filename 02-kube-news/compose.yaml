@@ -1,7 +1,7 @@
 services:
   # Serviço da aplicação Kube-News
   app:
-    image: fabriciosveronez/kube-news-maratona:v1
+    image: oagara/kube-news-maratona:v1
     build:
       context: ./src
       dockerfile: Dockerfile
