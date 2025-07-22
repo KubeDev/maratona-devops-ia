@@ -19,12 +19,13 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v6
-      with:
-        context: 02-kube-news/src
-        file: 02-kube-news/src/Dockerfile
-        push: true
-        tags: |
-          fabriciosveronez/kube-news-maratona:${{ github.run_number }}
+    
+-name: Build and push Docker image
+  uses: docker/build-push-action@v2
+  with:
+    context: ./kube-news/src
+    file: ./kube-news/src/Dockerfile
+    push: true
+    tags: fabriciosveronez/kube-news-maratona:${{ github.run_number }}
+
           fabriciosveronez/kube-news-maratona:latest
