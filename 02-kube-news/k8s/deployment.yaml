@@ -53,7 +53,7 @@ spec:
     spec:
       containers:
       - name: kube-news-app
-        image: fabriciosveronez/kube-news-maratona:v6
+        image: lucasbrasileiro/kube-news-maratona:v5
         ports:
         - containerPort: 8080
         env:
