@@ -1,24 +1,30 @@
-name: CI-CD
+name: CI
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-    CI:
-        runs-on: ubuntu-latest
-        steps:
-            - run: echo "Obter o código"
-            - run: echo "Executar o Docker Build"
-            - run: echo "Enviar a Imagem Docker para o Docker Hub"
+  CI:
 
-    CD:
-        needs: [CI]
-        runs-on: ubuntu-latest
-        
-        steps:
-            - run: echo "Obter o código"
-            - run: echo "Configurar o Kubeconfig"
-            - run: echo "Executar o apply"
-          
+    steps:
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v6
+      with:
+        context: 02-kube-news/src
+        file: 02-kube-news/src/Dockerfile
+        push: true
+        tags: 
+          fabriciosveronez/kube-news-maratona:${{ github.run_number }}
+          fabriciosveronez/kube-news-maratona:latest
