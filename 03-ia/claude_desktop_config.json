@@ -1,0 +1,41 @@
+{
+    "mcpServers": {
+        "filesystem": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "-v",
+                "\\\\wsl.localhost\\Ubuntu\\home\\fabricioveronez\\projetos:/projetos",
+                "mcp/filesystem",
+                "/projetos"
+            ]
+        },
+        "kubernetes": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "-v",
+                "\\\\wsl.localhost\\Ubuntu\\home\\fabricioveronez\\.kube:/home/appuser/.kube",
+                "mcp/kubernetes"
+            ]
+        },
+        "prometheus": {
+            "command": "docker",
+            "args": [
+                "run",
+                "--rm",
+                "-i",
+                "-e",
+                "PROMETHEUS_URL",
+                "fabriciosveronez/prometheus-mcp-server:v1"
+            ],
+            "env": {
+                "PROMETHEUS_URL": "http://138.197.230.72:80"
+            }
+        }
+    }
+}
