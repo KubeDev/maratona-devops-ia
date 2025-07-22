@@ -1,4 +1,5 @@
 # maratona-devops-ia
+# Teste de commit para acionar GitHub Actions
 
 Link para ter $ 200 na Digital Ocean
 
