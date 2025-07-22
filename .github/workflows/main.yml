@@ -9,10 +9,24 @@ jobs:
     CI:
         runs-on: ubuntu-latest
         steps:
-          - run: echo "Obter o codigo"
-          - run: echo "Executar o Docker Build"
-          - run: echo "Enviar a imagem Docker ao Docker Hub"
+          - name: Checkout repository
+            uses: actions/checkout@v4
+          
+          - name: Login to Docker Hub
+            uses: docker/login-action@v3
+            with:
+              username: ${{ secrets.DOCKERHUB_USERNAME }}
+              password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+          - name: Build and push Docker image
+            uses: docker/build-push-action@v6
+            with:
+              context: 02-kube-news/src
+              file: 02-kube-news/src/Dockerfile
+              push: true
+              tags: |
+                fabriciosveronez/kube-news-maratona:v${{ github.run_number }}
+                fabriciosveronez/kube-news-maratona:latest
     CD:
         needs: [CI]
         runs-on: ubuntu-latest
