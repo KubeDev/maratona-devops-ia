@@ -7,9 +7,9 @@ on:
 
 jobs:
   CI:
+    runs-on: ubuntu-latest
 
     steps:
-
     - name: Checkout repository
       uses: actions/checkout@v4
 
@@ -25,6 +25,6 @@ jobs:
         context: 02-kube-news/src
         file: 02-kube-news/src/Dockerfile
         push: true
-        tags: 
+        tags: |
           fabriciosveronez/kube-news-maratona:${{ github.run_number }}
           fabriciosveronez/kube-news-maratona:latest
