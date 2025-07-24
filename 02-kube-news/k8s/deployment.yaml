@@ -15,6 +15,7 @@ spec:
       containers:
       - name: postgres
         image: postgres:15-alpine
+        imagePullPolicy: Always
         ports:
         - containerPort: 5432
         env:
@@ -57,6 +58,7 @@ spec:
       containers:
       - name: kube-news-app
         image: fabriciosveronez/kube-news-maratona
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         env:
@@ -85,4 +87,4 @@ spec:
   - port: 80
     targetPort: 8080
   selector:
-    app: kube-news-app 
+    app: kube-news-app

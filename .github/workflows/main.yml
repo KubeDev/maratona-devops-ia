@@ -24,7 +24,9 @@ jobs:
           context: 02-kube-news/src
           file: 02-kube-news/src/Dockerfile
           push: true
-          tags: fabriciosveronez/kube-news-maratona:${{ github.run_number }}
+          tags: |
+            fabriciosveronez/kube-news-maratona:${{ github.run_number }}
+            fabriciosveronez/kube-news-maratona:latest
 
   deploy-to-kubernetes:
     runs-on: ubuntu-latest
