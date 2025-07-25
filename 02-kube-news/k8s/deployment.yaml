@@ -42,7 +42,7 @@ kind: Deployment
 metadata:
   name: kube-news-app
 spec:
-  replicas: 5
+  replicas: 4
   selector:
     matchLabels:
       app: kube-news-app
@@ -50,6 +50,9 @@ spec:
     metadata:
       labels:
         app: kube-news-app
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
     spec:
       containers:
       - name: kube-news-app
